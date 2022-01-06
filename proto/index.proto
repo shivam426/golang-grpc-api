@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package main;
+
+option go_package = "./proto";
+
+message User {
+	int32 id = 1;
+	string name = 2;
+	string city = 3;
+	int64 phone = 4;
+   float height = 5;
+   bool married = 6;
+  }
+  
+message CreateRequestResponse {
+   User user=1;
+}
+  
+  
+message ReadRequest {
+   int32 id = 1;
+}
+  
+message ReadResponse {
+   User user=1;
+}
+service corpapi {
+   rpc createUser (CreateRequestResponse) returns (CreateRequestResponse);
+   rpc fetchUser (ReadRequest) returns (ReadResponse);
+}
